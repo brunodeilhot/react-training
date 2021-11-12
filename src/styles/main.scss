@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300&display=swap');
+@import 'reset';
+
+$ft-family: 'Lato', sans-serif;
+$ft-black: 900;
+$ft-header: 4rem;
+$ft-footer: 1.2rem;
+
+$primary: #c8e08a;
+$secondary: #3b3b3b;
+$bg-color: #f0f0f0;
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: $ft-family;
+  background: $bg-color;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-flow: column nowrap;
+}
+
+.container {
+  flex: 1;
+}
+
+.header {
+  background: $secondary;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 1px 1px 5px black;
+  margin-bottom: 30px;
+    h1 {
+      font-size: $ft-header;
+      font-weight: $ft-black;
+      color: $primary;
+    }
+}
+
+.footer {
+  text-align: center;
+  background: $secondary;
+  text-align: center;
+  padding: 20px 0;
+  box-shadow: 1px 1px 5px black;
+  margin-top: 30px;
+   p {
+     font-size: $ft-footer;
+     color: $primary;
+   }
+}

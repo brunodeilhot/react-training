@@ -1,0 +1,119 @@
+$primary: #c8e08a;
+$secondary: #3b3b3b;
+$ft-color: #ffffff;
+
+$ft-family: 'Lato', sans-serif;
+
+$ft-title: 2rem;
+$ft-label: 1.2rem;
+$ft-text: 1.4rem;
+$ft-height: 1.8rem;
+
+$ft-light: 300;
+$ft-regular: 400;
+$ft-bold: 700;
+
+.article {
+    display: flex;
+    flex-flow: row nowrap;
+    background: $secondary;
+    box-shadow: 1px 1px 5px black;
+    padding: 15px;
+}
+
+.col {
+    &-2-30 {
+        flex: 0 30%;
+    }
+    &-2-70 {
+        flex: 0 70%;
+    }
+}
+
+.avatar {
+    margin-right: 15px;
+    border-right: 2px solid $primary;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+
+    img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid $primary;
+    }
+
+    span {
+        color: $primary;
+        margin: 10px 0;
+        display: block;
+        font-weight: 400;
+        font-size: 2rem;
+    }
+
+}
+
+.story {
+    display: flex;
+    flex-flow: column nowrap;
+    .title {
+        h2 {
+            font-size: $ft-title;
+            color: $primary;
+            margin-bottom: 10px;
+        }
+    }
+    .message {
+        color: $ft-color;
+        font-size: $ft-text;
+        font-weight: $ft-regular;
+        line-height: $ft-height;
+        white-space: pre-wrap;
+    }
+    .article-footer {
+        margin-top: 10px;
+        text-align: right;
+    }
+    .bt {
+        margin-top: 10px;
+        background: $secondary;
+        color: $primary;
+        padding: 3px;
+        outline: none;
+        border: 2px solid $primary;
+        font-size: $ft-label;
+        font-family: $ft-family;
+        font-weight: $ft-regular;
+        transition: all 0.3s linear;
+        min-width: 45px;
+        &-left {
+        border-radius: 6px 0px 0px 6px;
+        border-right: none;
+            &:hover {
+                transition: all 0.3s linear;
+                background: $primary;
+                color: $secondary;
+            }
+        }
+        &-right {
+            border-radius: 0px 6px 6px 0px;
+            &:hover {
+                transition: all 0.3s linear;
+                background: $primary;
+                color: $secondary;
+            }
+        }
+    }
+}
+
+.meta {
+    color: $ft-color;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.1rem;
+}
+

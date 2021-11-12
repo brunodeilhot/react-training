@@ -1,0 +1,108 @@
+$primary: #c8e08a;
+$secondary: #3b3b3b;
+$ft-color: #ffffff;
+$bg-color: #f0f0f0;
+
+$ft-title: 2rem;
+$ft-label: 1.6rem;
+$ft-text: 1.4rem;
+$ft-height: 1.8rem;
+$ft-family: 'Lato', sans-serif;
+$ft-light: 300;
+$ft-regular: 400;
+$ft-bold: 700;
+
+
+.dashboard {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.article {
+    &-form {
+        display: flex;
+        flex-flow: column;
+        margin-bottom: 30px;
+        background: $secondary;
+        box-shadow: 1px 1px 5px black;
+        padding: 15px;
+        h2 {
+            color: $primary;
+            font-size: $ft-title;
+            font-weight: 700;
+        }
+        label {
+            color: $primary;
+            font-size: $ft-label;
+            font-weight: 400;
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 15px;
+        }
+        .input {
+            border: 2px solid $primary;
+            border-radius: 6px;
+            font-family: $ft-family;
+            font-size: $ft-text;
+            font-weight: $ft-regular;
+            background: $bg-color;
+            color: $secondary;
+            padding: 5px;
+            min-width: 100%
+        }
+        .textarea {
+            border: 2px solid $primary;
+            border-radius: 6px;
+            font-family: $ft-family;
+            font-weight: $ft-regular;
+            font-size: $ft-text;
+            background: $bg-color;
+            color: $secondary;
+            padding: 5px;
+            min-width: 100%;
+            min-height: 100px;
+        }
+        .error-message {
+            margin-top: 10px;
+            color: rgb(204, 11, 11);
+
+        }
+        .row {
+            display: flex;
+            flex-flow: row nowrap;
+        }
+        .col {
+            &-2-30 {
+                flex: 0 30%;
+                margin-right: 20px;
+            }
+            &-2-70 {
+                flex: 0 70%;
+            }
+        }
+        button {
+            margin-top: 20px;
+            align-self: flex-end;
+            background: $secondary;
+            color: $primary;
+            padding: 10px;
+            outline: none;
+            border: 2px solid $primary;
+            border-radius: 6px;
+            font-size: $ft-label;
+            font-family: $ft-family;
+            font-weight: $ft-bold;
+            transition: all 0.3s linear;
+            &:hover {
+                transition: all 0.3s linear;
+                background: $primary;
+                color: $secondary;
+            }
+        }
+    }
+    &-list {
+        display: grid;
+        grid-row-gap: 20px;
+    }
+}
+
