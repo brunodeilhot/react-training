@@ -84,7 +84,7 @@ const ArticleForm = () => {
                             user: {
                                 id: newUserID(),
                                 name: values.username,
-                                picture: values.avatar = '' ? 'https://brunodeilhot.github.io/JS-training/Memoria/assets/banana.png' : values.avatar,
+                                picture: values.avatar = null ? 'https://brunodeilhot.github.io/JS-training/Memoria/assets/banana.png' : values.avatar,
                                 joined: date
                             }
                         })

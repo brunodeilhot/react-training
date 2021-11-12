@@ -28,6 +28,7 @@ const Article = ({ id, title, author, story, created, edited }: IArticleProps) =
                 story={story}
                 created={created}
                 edited={edited}
+                author={author}
             />
         </div>
     )

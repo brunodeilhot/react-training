@@ -39,6 +39,11 @@ export function deleteStory(data: any) {
     .then(checkStatus);
 }
 
+export function updateStory(data: any) {
+    return api.put(`/stories?id=eq.${data.id}`, data)
+    .then(checkStatus)
+}
+
 function checkStatus(response: any) {
     if (response.status >= 200 && response.status < 300) {
         return response;
@@ -58,7 +63,8 @@ const methods = {
     getStories,
     createStory,
     createUser,
-    deleteStory
+    deleteStory,
+    updateStory
 };
 
 export default methods;

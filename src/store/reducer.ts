@@ -2,6 +2,7 @@ import api from '../api';
 import { IStory } from '../model/interface';
 
 export default function reducer(state: any, action: any) {
+    
     switch (action.type) {
         case 'FETCH_STORIES_SUCCESS':
             return { 
@@ -27,9 +28,17 @@ export default function reducer(state: any, action: any) {
                 updateArticles: true
             }
         case 'REMOVE_STORY':
-            const storyIndex = state.stories.findIndex((story: IStory) => story.id === action.payload);
-            state.stories.splice(storyIndex, 1);
+            const removeStoryIndex = state.stories.findIndex((story: IStory) => story.id === action.story.id);
+            state.stories.splice(removeStoryIndex, 1);
             return{
+                ...state,
+                stories: [...state.stories]
+            }
+        case 'UPDATE_STORY':
+            const updateStoryIndex = state.stories.findIndex((story: IStory) => story.id === action.story.id);
+            state.stories.splice(updateStoryIndex, 1, action.story);
+            api.updateStory(action.story);
+            return {
                 ...state,
                 stories: [...state.stories]
             }

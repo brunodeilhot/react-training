@@ -25,11 +25,17 @@ export interface IStory {
     title: string,
     story: string,
     created: string,
-    edited: string
+    edited: string,
+    author: number
 }
 
 export interface IDefaultState {
     users: Array<IUsers>,
     stories: Array<IStories>,
     updateArticles: boolean
+}
+
+export interface IErrorMessage {
+    title: [],
+    story: []
 }

@@ -1,6 +1,7 @@
 $primary: #c8e08a;
 $secondary: #3b3b3b;
 $ft-color: #ffffff;
+$bg-color: #f0f0f0;
 
 $ft-family: 'Lato', sans-serif;
 
@@ -16,6 +17,7 @@ $ft-bold: 700;
 .article {
     display: flex;
     flex-flow: row nowrap;
+    position: relative;
     background: $secondary;
     box-shadow: 1px 1px 5px black;
     padding: 15px;
@@ -60,11 +62,27 @@ $ft-bold: 700;
 .story {
     display: flex;
     flex-flow: column nowrap;
+    .error-message {
+        color: rgb(255, 33, 33);
+        font-size: $ft-label;
+    }
     .title {
         h2 {
             font-size: $ft-title;
             color: $primary;
             margin-bottom: 10px;
+        }
+        .input {
+            border: 2px solid $primary;
+            border-radius: 6px;
+            font-family: $ft-family;
+            font-size: $ft-text;
+            font-weight: $ft-regular;
+            background: $bg-color;
+            color: $secondary;
+            padding: 5px;
+            min-width: 100%;
+            margin-bottom: 5px;
         }
     }
     .message {
@@ -73,42 +91,61 @@ $ft-bold: 700;
         font-weight: $ft-regular;
         line-height: $ft-height;
         white-space: pre-wrap;
+        .textarea {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            border: 2px solid $primary;
+            border-radius: 6px;
+            font-family: $ft-family;
+            font-weight: $ft-regular;
+            font-size: $ft-text;
+            background: $bg-color;
+            color: $secondary;
+            padding: 5px;
+            min-width: 100%;
+            min-height: 100px;
+        }
     }
     .article-footer {
         margin-top: 10px;
         text-align: right;
     }
+
     .bt {
         margin-top: 10px;
         background: $secondary;
         color: $primary;
-        padding: 3px;
+        padding: 5px 10px;
         outline: none;
         border: 2px solid $primary;
         font-size: $ft-label;
         font-family: $ft-family;
         font-weight: $ft-regular;
         transition: all 0.3s linear;
-        min-width: 45px;
+        &:hover {
+            transition: all 0.3s linear;
+            background: $primary;
+            color: $secondary;
+        }
         &-left {
-        border-radius: 6px 0px 0px 6px;
-        border-right: none;
-            &:hover {
-                transition: all 0.3s linear;
-                background: $primary;
-                color: $secondary;
-            }
+            border-radius: 6px 0px 0px 6px;
+            border-right: none;
         }
         &-right {
             border-radius: 0px 6px 6px 0px;
-            &:hover {
-                transition: all 0.3s linear;
-                background: $primary;
-                color: $secondary;
-            }
+        }
+        &-active {
+            transition: all 0.3s linear;
+            background: $primary;
+            color: $secondary;
         }
     }
+    .error-border {
+        border: 1px solid rgb(255, 33, 33) !important;
+    }
 }
+
+
 
 .meta {
     color: $ft-color;
@@ -117,3 +154,19 @@ $ft-bold: 700;
     font-size: 1.1rem;
 }
 
+.delete-confirm {
+    position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: $secondary;
+    text-align: center;
+    p {
+        font-size: $ft-title;
+        color: $ft-color;
+    }
+}
