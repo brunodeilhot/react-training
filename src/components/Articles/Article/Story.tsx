@@ -11,8 +11,8 @@ const Story = ({ id, title, story, created, edited, author}: IStory ) => {
     const [deleteConfirm, setDelete] = useState(false);
     const [editConfirm, setEdit] = useState(false);
     const [updatedStory, updateStory] = useState({ title: title, story: story});
-    const [titleError, setTitleError] = useState('');
-    const [storyError, setStoryError] = useState('');
+    const [titleError, setTitleError] = useState(null);
+    const [storyError, setStoryError] = useState(null);
 
 
     const date = new Date();
@@ -23,7 +23,7 @@ const Story = ({ id, title, story, created, edited, author}: IStory ) => {
         .max(50, 'Must be 50 characters or less')
         .required('Title is required'),
         story: Yup.string()
-        .min(50, 'Must be 50 characters or more')
+        .min(30, 'Must be 30 characters or more')
         .required('Story is required'),
     })
 
@@ -53,14 +53,16 @@ const Story = ({ id, title, story, created, edited, author}: IStory ) => {
                    ...obj, [k]: k in obj ? [].concat(obj[k], v) : [v]
                 }), {});
 
-                const titleErrors = errorMessages.title ? errorMessages.title.join(' and ').toString() : '';
-                const storyErrors = errorMessages.story ? errorMessages.story.join(' and ').toString() : '';
+                const titleErrors = errorMessages.title ? errorMessages.title.join(' and ').toString() : null;
+                const storyErrors = errorMessages.story ? errorMessages.story.join(' and ').toString() : null;
                 
                 setTitleError(titleErrors);
                 setStoryError(storyErrors);
               })
             .then(function (valid) {
                 if(valid) {
+                    setTitleError(null);
+                    setStoryError(null);
                     validatedStory();
                 }
                 return
@@ -93,17 +95,17 @@ const Story = ({ id, title, story, created, edited, author}: IStory ) => {
         <div className="col-2-70 story">
             <div className="title">
                 {editConfirm === true
-                ? <input type="text" value={updatedStory.title} onChange={({target: { value }}) => updateStory({ title: value, story: updatedStory.story })} className={`input ${titleError === '' ? '' : 'error-border'}`}/>
+                ? <input type="text" value={updatedStory.title} onChange={({target: { value }}) => updateStory({ title: value, story: updatedStory.story })} className={`input ${titleError === null ? '' : 'error-border'}`}/>
                 : <h2>{title}</h2>
                 }
-                <p className="error-message">{titleError === '' ? null : titleError}</p>
+                <p className="error-message">{titleError === null ? null : titleError}</p>
             </div>
             <div className="message">
                 {editConfirm === true
-                ? <textarea value={updatedStory.story} onChange={({target: { value }}) => updateStory({ title: updatedStory.title, story: value})} className={`textarea ${storyError === '' ? '' : 'error-border'}`}/>
+                ? <textarea value={updatedStory.story} onChange={({target: { value }}) => updateStory({ title: updatedStory.title, story: value})} className={`textarea ${storyError === null ? '' : 'error-border'}`}/>
                 : <p>{story}</p>
                 }
-                <p className="error-message">{ storyError === '' ? null : storyError }</p>
+                <p className="error-message">{ storyError === null ? null : storyError }</p>
             </div>
             <div className="article-footer meta">
                 <p>{edited === created ? `Created ${moment(created).fromNow()}` : `Edited ${moment(edited).fromNow()}`} </p>
@@ -120,8 +122,6 @@ const Story = ({ id, title, story, created, edited, author}: IStory ) => {
             </div>
             : null
             }
-            
-            {/* <p>Story edited: {moment(edited).fromNow()}</p> */}
         </div>
     )
 };

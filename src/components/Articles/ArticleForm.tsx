@@ -23,8 +23,8 @@ const ArticleForm = () => {
     }
 
     function findUser(value: any) {
-        if (userState.find((user: any) => user.name === value)) {
-            const userData = userState.filter((user: any) => user.name === value);
+        if (userState.find((user: any) => user.name.toLocaleLowerCase() === value.toLocaleLowerCase())) {
+            const userData = userState.filter((user: any) => user.name.toLocaleLowerCase() === value.toLocaleLowerCase());
             const user = {...userData[0]};
             return user
         } else {
@@ -67,7 +67,7 @@ const ArticleForm = () => {
                     .max(50, 'Must be 50 characters or less')
                     .required('Title is required'),
                 story: Yup.string()
-                    .min(50, 'Must be 50 characters or more')
+                    .min(30, 'Must be 30 characters or more')
                     .required('Story is required'),
             })}
             onSubmit={(values, { setSubmitting, resetForm }) => {
@@ -89,16 +89,13 @@ const ArticleForm = () => {
                         })
                     } else {
                         dispatch({
-                            type: 'ADD_USER',
+                            type: 'CREATE_USER_AND_STORY',
                             user: {
                                 id: newUserID(),
                                 name: values.username,
                                 picture: values.avatar === '' ? 'https://brunodeilhot.github.io/Astrology/assets/background.png' : values.avatar,
                                 joined: date
-                            }
-                        })
-                        dispatch({
-                            type: 'ADD_STORY',
+                            },
                             story: {
                                 id: newStoryID(),
                                 title: values.title,

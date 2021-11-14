@@ -29,9 +29,10 @@ export function createStory(data: any) {
     .then(checkStatus);
 }
 
-export function createUser(data: any) {
-    return api.post(`/users`, data)
-    .then(checkStatus);
+export function createUserAndStory(data: any) {
+    api.post(`/users`, data.user).then(checkStatus);
+    api.post(`/stories`, data.story).then(checkStatus);
+    return
 }
 
 export function deleteStory(data: any) {
@@ -62,7 +63,7 @@ const methods = {
     getUsers,
     getStories,
     createStory,
-    createUser,
+    createUserAndStory,
     deleteStory,
     updateStory
 };

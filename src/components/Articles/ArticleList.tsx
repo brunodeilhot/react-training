@@ -20,12 +20,15 @@ const ArticleList = () => {
         function loadDataFromServer() {
             api.getStories((serverStories: any) => dispatch({ type: 'FETCH_STORIES_SUCCESS', payload: serverStories }))
             api.getUsers((serverUsers: any) => dispatch({ type: 'FETCH_USER_SUCCESS', payload: serverUsers }))
-            dispatch({ type: 'STOP_ARTICLE_UPDATE' })
         }
 
-        const interval = setInterval(loadDataFromServer, 5000)
         loadDataFromServer()
+        console.log('articles loaded')
+        
+        const interval = setInterval(loadDataFromServer, 5000)
+        dispatch({ type: 'STOP_ARTICLE_UPDATE' })
         return () => clearInterval(interval);
+
 
     },[dispatch, updateArticlesState]);
 

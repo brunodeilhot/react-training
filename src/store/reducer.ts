@@ -15,16 +15,18 @@ export default function reducer(state: any, action: any) {
                 ...state,
                 users: action.payload
             }
-        case 'ADD_USER':
-            api.createUser(action.user);
-            return {
-                ...state,
-                users: [...state.users, action.user]
-            }
         case 'ADD_STORY':
             api.createStory(action.story);
             return {
                 ...state,
+                stories: [...state.stories, action.story],
+                updateArticles: true
+            }
+        case 'CREATE_USER_AND_STORY':
+            api.createUserAndStory(action)
+            return {
+                ...state,
+                users: [...state.users, action.user],
                 stories: [...state.stories, action.story],
                 updateArticles: true
             }
