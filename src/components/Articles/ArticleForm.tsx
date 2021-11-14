@@ -91,7 +91,7 @@ const ArticleForm = () => {
                             user: {
                                 id: newUserID(),
                                 name: values.username,
-                                picture: values.avatar = null ? 'https://brunodeilhot.github.io/JS-training/Memoria/assets/banana.png' : values.avatar,
+                                picture: values.avatar === '' ? 'https://brunodeilhot.github.io/Astrology/assets/background.png' : values.avatar,
                                 joined: date
                             }
                         })
@@ -108,6 +108,7 @@ const ArticleForm = () => {
                         })
                     }
                     setSubmitting(false);
+                    handleFormState();
                     resetForm();
                 }, 400);
             }}
