@@ -2,6 +2,7 @@ import { IDefaultState } from "../../model/interface";
 import { useSelector, useDispatch } from "react-redux";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { useState } from "react";
 
 const ArticleForm = () => {
 
@@ -9,6 +10,8 @@ const ArticleForm = () => {
 
     const userState = useSelector((state: IDefaultState ) => state.users)
     const storyState = useSelector((state: IDefaultState ) => state.stories)
+
+    const [hideForm, setHideForm] = useState(true)
     
     const date = new Date();
 
@@ -46,6 +49,10 @@ const ArticleForm = () => {
         return storyState.length === 0 ? 1 : storyState[0].id + 1
     }
 
+    function handleFormState() {
+        setHideForm(hideForm ? false : true);
+    }
+
     return (
         <Formik
             initialValues={values}
@@ -53,7 +60,7 @@ const ArticleForm = () => {
                 username: Yup.string()
                     .max(15, 'Must be 15 characters or less')
                     .required('Username is required'),
-                avatar: Yup.string().url(),
+                avatar: Yup.string().url('Avatar must be a valid URL'),
                 title: Yup.string()
                     .max(50, 'Must be 50 characters or less')
                     .required('Title is required'),
@@ -106,28 +113,54 @@ const ArticleForm = () => {
             }}
         >
             {({ isSubmitting, setFieldValue }) => (
-                <Form className="article-form">
+                <div className="article-form-group">
+
+                    <div className="article-header">
                     <h2>Create a story</h2>
-                    <div className="row">
-                        <div className="col-2-30">
-                            <label htmlFor="username">Username</label>
-                            <Field onKeyUp={(e: any) => {handleAvatar(e); setFieldValue('avatar', values.avatar, true)}} className="input" type="text" name="username" placeholder="Your name is.." />
-                            <ErrorMessage className="error-message" name="username" component="div" />
-                            <label htmlFor="avatar">Avatar</label>
-                            <Field className="input" type="text" name="avatar" placeholder="Link to an image.." />
-                            <ErrorMessage className="error-message" name="avatar" component="div" />
-                        </div>
-                        <div className="col-2-70">
-                            <label htmlFor="title">Title</label>
-                            <Field className="input" type="text" name="title" placeholder="The main subject of your story.." />
-                            <ErrorMessage className="error-message" name="title" component="div" />
-                            <label htmlFor="story">Story</label>
-                            <Field className="textarea" name="story" as="textarea" placeholder="Write to your hearth's delight.." />
-                            <ErrorMessage className="error-message" name="story" component="div" />
-                        </div>
+                    <button onClick={handleFormState}><i className={hideForm ? 'gg-chevron-down' : 'gg-chevron-up'}></i></button>
                     </div>
-                    <button type="submit" disabled={isSubmitting}>Add Story</button>
-                </Form>
+                    {hideForm ? null : 
+                        <Form className="article-form">
+                            <div className="row">
+                                <div className="col-2-30">
+                                    <label htmlFor="username">Username</label>
+
+                                    <Field name="username">
+                                        {({field, meta: { touched, error }}: { field: any, meta: any}) => 
+                                        <input onKeyUp={(e: any) => { handleAvatar(e); setFieldValue('avatar', values.avatar, true) }} placeholder="Your name is.." type="text" className={touched && error ? "input error-border" : "input"} {...field} />
+                                        }
+                                    </Field>
+                                    <ErrorMessage className="error-message" name="username" component="div" />
+                                    <label htmlFor="avatar">Avatar</label>
+                                    <Field name="avatar">
+                                        {({field, meta: { touched, error }}: { field: any, meta: any}) => 
+                                            <input placeholder="Link to an image.." type="text" className={touched && error ? "input error-border" : "input"} {...field} />
+                                        }
+                                    </Field>
+                                    <ErrorMessage className="error-message" name="avatar" component="div" />
+                                </div>
+                                <div className="col-2-70">
+                                    <label htmlFor="title">Title</label>
+                                    <Field name="title" >
+                                        {({field, meta: { touched, error }}: { field: any, meta: any}) => 
+                                            <input placeholder="The main subject of your story.." type="text" className={touched && error ? "input error-border" : "input"} {...field} />
+                                        }
+                                    </Field>
+                                    <ErrorMessage className="error-message" name="title" component="div" />
+                                    <label htmlFor="story">Story</label>
+                                    <Field name="story" >
+                                        {({field, meta: { touched, error }}: { field: any, meta: any}) => 
+                                            <textarea placeholder="Write to your hearth's delight.." className={touched && error ? "textarea error-border" : "textarea"} {...field} />
+                                        }
+                                    </Field>
+                                    <ErrorMessage className="error-message" name="story" component="div" />
+                                </div>
+                            </div>
+                            <button type="submit" disabled={isSubmitting}>Add Story</button>
+                        </Form>
+                    }
+
+                </div>
             )}
         </Formik>
     );

@@ -32,10 +32,8 @@ export interface IStory {
 export interface IDefaultState {
     users: Array<IUsers>,
     stories: Array<IStories>,
-    updateArticles: boolean
-}
-
-export interface IErrorMessage {
-    title: [],
-    story: []
+    updateArticles: boolean,
+    loading: boolean,
+    searchOption: string,
+    searchValue: string
 }

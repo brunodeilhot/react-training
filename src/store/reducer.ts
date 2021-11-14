@@ -7,7 +7,8 @@ export default function reducer(state: any, action: any) {
         case 'FETCH_STORIES_SUCCESS':
             return { 
                 ...state,
-                stories: action.payload
+                stories: action.payload,
+                loading: false
             }
         case 'FETCH_USER_SUCCESS':
             return {
@@ -46,6 +47,16 @@ export default function reducer(state: any, action: any) {
             return {
                 ...state,
                 updateArticles: false
+            }
+        case 'SEARCH_OPTION_CHANGE':
+            return {
+                ...state,
+                searchOption: action.payload
+            }
+        case 'SEARCH_VALUE_CHANGE':
+            return {
+                ...state,
+                searchValue: action.payload
             }
         default:
             return state

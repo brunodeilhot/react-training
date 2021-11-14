@@ -1,4 +1,4 @@
-import { IStory, IErrorMessage } from "../../../model/interface";
+import { IStory } from "../../../model/interface";
 import moment from "moment";
 import api from '../../../api';
 import { useState } from "react";
@@ -58,9 +58,6 @@ const Story = ({ id, title, story, created, edited, author}: IStory ) => {
                 
                 setTitleError(titleErrors);
                 setStoryError(storyErrors);
-
-                console.log(titleErrors)
-                console.log(storyErrors)
               })
             .then(function (valid) {
                 if(valid) {

@@ -2,6 +2,7 @@ $primary: #c8e08a;
 $secondary: #3b3b3b;
 $ft-color: #ffffff;
 $bg-color: #f0f0f0;
+$err-color: rgb(255, 33, 33);
 
 $ft-family: 'Lato', sans-serif;
 
@@ -63,7 +64,7 @@ $ft-bold: 700;
     display: flex;
     flex-flow: column nowrap;
     .error-message {
-        color: rgb(255, 33, 33);
+        color: $err-color;
         font-size: $ft-label;
     }
     .title {
@@ -141,7 +142,7 @@ $ft-bold: 700;
         }
     }
     .error-border {
-        border: 1px solid rgb(255, 33, 33) !important;
+        border: 2px solid $err-color !important;
     }
 }
 
