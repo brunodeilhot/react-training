@@ -25,7 +25,7 @@ const ArticleList = () => {
         loadDataFromServer()
         
         const interval = setInterval(loadDataFromServer, 5000)
-        dispatch({ type: 'STOP_ARTICLE_UPDATE' })
+        setTimeout(() => {dispatch({ type: 'STOP_ARTICLE_UPDATE' })}, 800)
         return () => clearInterval(interval);
 
 
