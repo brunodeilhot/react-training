@@ -24,7 +24,7 @@ const ArticleList = () => {
 
     const username = userState.filter(
         (user: any) => {
-            return user.name === searchValue
+            return user.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase()) 
         }
     );
 
