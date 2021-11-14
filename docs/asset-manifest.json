@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/react-training/static/css/main.04567ab3.chunk.css",
-    "main.js": "/react-training/static/js/main.a4a19e0a.chunk.js",
-    "main.js.map": "/react-training/static/js/main.a4a19e0a.chunk.js.map",
+    "main.js": "/react-training/static/js/main.84576308.chunk.js",
+    "main.js.map": "/react-training/static/js/main.84576308.chunk.js.map",
     "runtime-main.js": "/react-training/static/js/runtime-main.2d89dc89.js",
     "runtime-main.js.map": "/react-training/static/js/runtime-main.2d89dc89.js.map",
     "static/js/2.55305362.chunk.js": "/react-training/static/js/2.55305362.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.2d89dc89.js",
     "static/js/2.55305362.chunk.js",
     "static/css/main.04567ab3.chunk.css",
-    "static/js/main.a4a19e0a.chunk.js"
+    "static/js/main.84576308.chunk.js"
   ]
 }

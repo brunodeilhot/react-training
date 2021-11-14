@@ -45,7 +45,7 @@ const ArticleList = () => {
         : storiesState
         .sort((a: IStories, b: IStories) => b.created > a.created ? 1 : -1)
         .filter(searchOption === 'title' 
-                ? (story: any) => story.title.toLocaleLowerCase().includes(searchValue)
+                ? (story: any) => story.title.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
                 : (story: any) => story.author === {...username[0]}.id
                 )
         .map((story: any) => (
