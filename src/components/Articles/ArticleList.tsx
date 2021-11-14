@@ -23,7 +23,6 @@ const ArticleList = () => {
         }
 
         loadDataFromServer()
-        console.log('articles loaded')
         
         const interval = setInterval(loadDataFromServer, 5000)
         dispatch({ type: 'STOP_ARTICLE_UPDATE' })
