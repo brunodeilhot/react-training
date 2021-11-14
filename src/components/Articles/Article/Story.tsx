@@ -19,11 +19,11 @@ const Story = ({ id, title, story, created, edited, author}: IStory ) => {
 
     const schema = Yup.object({
         title: Yup.string()
-        .min(5, 'Must be 5 characters or more')
+        .min(5, 'Must be at least 5 characters')
         .max(50, 'Must be 50 characters or less')
         .required('Title is required'),
         story: Yup.string()
-        .min(100, 'Must be 100 characters or more')
+        .min(50, 'Must be 50 characters or more')
         .required('Story is required'),
     })
 

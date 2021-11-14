@@ -17,7 +17,6 @@ export default function reducer(state: any, action: any) {
             }
         case 'ADD_USER':
             api.createUser(action.user);
-            console.log(action.user);
             return {
                 ...state,
                 users: [...state.users, action.user]

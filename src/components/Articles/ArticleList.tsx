@@ -16,11 +16,20 @@ const ArticleList = () => {
     const searchValue = useSelector((state: IDefaultState) => state.searchValue)
 
     useEffect(() => {
-        api.getStories((serverStories: any) => dispatch({ type: 'FETCH_STORIES_SUCCESS', payload: serverStories }))
-        api.getUsers((serverUsers: any) => dispatch({ type: 'FETCH_USER_SUCCESS', payload: serverUsers }))
-        dispatch({ type: 'STOP_ARTICLE_UPDATE' })
-        console.log('fetch story effect')
+
+        function loadDataFromServer() {
+            api.getStories((serverStories: any) => dispatch({ type: 'FETCH_STORIES_SUCCESS', payload: serverStories }))
+            api.getUsers((serverUsers: any) => dispatch({ type: 'FETCH_USER_SUCCESS', payload: serverUsers }))
+            dispatch({ type: 'STOP_ARTICLE_UPDATE' })
+        }
+
+        const interval = setInterval(loadDataFromServer, 5000)
+        loadDataFromServer()
+        return () => clearInterval(interval);
+
     },[dispatch, updateArticlesState]);
+
+
 
     const username = userState.filter(
         (user: any) => {

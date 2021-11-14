@@ -58,14 +58,16 @@ const ArticleForm = () => {
             initialValues={values}
             validationSchema={Yup.object({
                 username: Yup.string()
+                    .min(2, 'Must be at least 2 characters long')
                     .max(15, 'Must be 15 characters or less')
                     .required('Username is required'),
                 avatar: Yup.string().url('Avatar must be a valid URL'),
                 title: Yup.string()
+                    .min(5, 'Must be at least 5 characters')
                     .max(50, 'Must be 50 characters or less')
                     .required('Title is required'),
                 story: Yup.string()
-                    .min(100, 'Must be 100 characters or more')
+                    .min(50, 'Must be 50 characters or more')
                     .required('Story is required'),
             })}
             onSubmit={(values, { setSubmitting, resetForm }) => {
