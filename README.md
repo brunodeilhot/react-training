@@ -4,6 +4,8 @@ This App was created to train many aspects of React such as functional component
 Users can create, share and edit their stories.
 The project is meant to be used as a part of a more complex app which needs this type of funcionality.
 
+[Try it live](https://brunodeilhot.github.io/react-training/)
+
 I used the following libraries:
   - <b>React Redux</b> to manage global state
   - <b>Formik</b> for the main form component which manages the creation of new stories
