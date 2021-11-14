@@ -20,6 +20,6 @@ It includes three main components:
   - <b>ArticleSearch</b>:
     - Handles user input to search stories by title or author
   - <b>ArticleList</b>:
-    - Displays a sorted list of articles fetched, through axios, from the database
+    - Displays a sorted list of articles fetched, through Axios, from the database
     - Filters articles based on user input in the ArticleSearch component
     - With useEffect hook maintains data synched with a setInterval
