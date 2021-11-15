@@ -92,6 +92,7 @@ $ft-bold: 700;
         font-weight: $ft-regular;
         line-height: $ft-height;
         white-space: pre-wrap;
+        margin-bottom: 10px;
         .textarea {
             margin-top: 10px;
             margin-bottom: 5px;
@@ -108,7 +109,7 @@ $ft-bold: 700;
         }
     }
     .article-footer {
-        margin-top: 10px;
+        margin-top: auto;
         text-align: right;
     }
 
